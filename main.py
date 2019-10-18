@@ -1,6 +1,7 @@
 # %%
 
 import nltk
+from nltk.tokenize import word_tokenize
 nltk.download()
 tagged_sentences = nltk.corpus.treebank.tagged_sents()
 
@@ -73,6 +74,7 @@ X, y = transform_to_dataset(training_sentences)
 
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.feature_extraction import DictVectorizer
+
 from sklearn.pipeline import Pipeline
 
 clf = Pipeline([
@@ -95,6 +97,6 @@ print("Accuracy:", clf.score(X_test, y_test))
 
 def pos_tag(sentence):
     tags = clf.predict([features(sentence, index) for index in range(len(sentence))])
-    return zip(sentence, tags)
+    return sentence, tags
 
 
