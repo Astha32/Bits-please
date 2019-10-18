@@ -1,4 +1,3 @@
-# %%
 
 import nltk
 nltk.download()
@@ -95,6 +94,6 @@ print("Accuracy:", clf.score(X_test, y_test))
 
 def pos_tag(sentence):
     tags = clf.predict([features(sentence, index) for index in range(len(sentence))])
-    return zip(sentence, tags)
+    return (sentence, tags)
 
 
