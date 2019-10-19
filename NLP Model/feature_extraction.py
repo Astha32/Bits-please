@@ -82,7 +82,7 @@ def filterAdj1(phrasesDict, filename):
 
     with open(filename) as f:
         for line in f:
-            l1 = line[1:-3]
+            l1 = line[1:-1]
             l1 = l1.strip()
             reviewContent.append(l1.rstrip("\r\n"))
 
@@ -205,7 +205,7 @@ def filterAdj(nounScores, adjDict, filename):
     with open(filename) as f:
         review = []
         for line in f:
-            l1 = line[1:-3]
+            l1 = line[1:-1]
             l1 = l1.strip()
             reviewContent.append(l1.rstrip("\r\n"))
 

@@ -14,9 +14,9 @@ def getScore(adjList):
 
     adjScores.update((x, 4 * y) for x, y in adjScores.items())
     adjScores = OrderedDict(
-            [('awesome', 4.0), ('excellent', 4.0), ('wonderful', 4.0), ('ideal', 3.6), ('incredible', 3.6),
-             ('beautiful', 3.4), ('great', 3.2), ('happy', 3.2), ('bright', 2.8000000000000003), ('nice', 2.4),
-             ('love', 2.0), ('creative', 2.0), ('able', 2.0), ('satisfied', 2.0), ('pleased', 2.0),
+            [('awesome', 4.0), ('excellent', 4.0), ('wonderful', 4.0), ('ideal', 3.6), ('incredible', 3.6), ('super', 3.8), ('good', 2.3), ('perfect', 4), ('okay', -0.2), ('ok', -0.3),
+             ('beautiful', 3.4), ('great', 3.2), ('happy', 3.2), ('bright', 2.8000000000000003), ('nice', 2.4), ('adorable', 2), ('superb', 2), ('worst', -2), ('poor', -1.6),
+             ('love', 2.0), ('creative', 2.0), ('able', 2.0), ('satisfied', 2.0), ('pleased', 2.0), ('decent', 0.8),
              ('sophisticated', 2.0),
              ('easy', 1.7333333333333334), ('fantastic', 1.6), ('advanced', 1.6), ('fabulous', 1.6), ('light', 1.6),
              ('comfortable', 1.6), ('available', 1.6), ('clean', 1.4666666666666668), ('quick', 1.3333333333333333),

@@ -7,11 +7,10 @@ import random
 import review_summarizer
 import pandas as pd
 
-url = "http://m4y4nk.net/hackabit/canon.txt"
-c = pd.read_csv(url, error_bad_lines=False)
-open('tester.txt', 'a').close()
-c.to_csv(r'tester.txt', header=None, index=None, sep=' ', mode='a')
-filename = 'tester.txt'
+# url = "http://m4y4nk.net/hackabit/redmi.txt"
+c = pd.read_csv('redmi.txt', error_bad_lines=False)
+c.to_csv(r'redmi.txt', header=None, index=None, sep=' ', mode='a')
+filename = 'redmi.txt'
 
 posCount = 0
 negCount = 0
@@ -28,7 +27,7 @@ with open(filename) as f:
     review = []
     i = 0
     for line in f:
-        l1 = line[1:-3]
+        l1 = line[1:-1]
         l1 = l1.strip()
         reviewContent.append(l1.rstrip("\r\n"))
         a = random.randint(0, 5)

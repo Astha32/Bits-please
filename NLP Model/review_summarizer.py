@@ -61,10 +61,7 @@ def score_tokens(filterd_words, sentence_tokens):
 
 def summarize(ranks, sentences, length):
     if length > len(sentences):
-        print(
-            "Error, more sentences requested than available. Use --l (--length) flag to adjust."
-        )
-        exit()
+       length = len(sentences)
 
     indices = nlargest(length, ranks, key=ranks.get)
     final_sentences = [sentences[j] for j in sorted(indices)]
