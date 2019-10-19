@@ -1,14 +1,8 @@
 import os
-import sys
 import feature_extraction
-import math
 import adjSc
-import operator
-import collections
-from textblob import TextBlob
 from texttable import Texttable
 import feature_score_ngrams
-import pandas as pd
 import random
 import review_summarizer
 import pandas as pd
@@ -110,7 +104,7 @@ print(review_summarizer.summary(filespath2))
 print("Bad things people said::")
 print(review_summarizer.summary(filespath1))
 
-print("Good things people said::")
+print("Neutral views of people::")
 print(review_summarizer.summary(filespath3))
 
 #Evaluation metric
