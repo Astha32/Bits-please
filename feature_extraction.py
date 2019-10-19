@@ -133,8 +133,8 @@ def findFeatures(reviewContent,filename):
     tb = Blobber(pos_tagger=NLTKTagger())
 
     for a in range(len(reviewContent)):  # Stores the score of the nouns
-        print("printing words::::")
-        print(reviewContent[a])
+        #print("printing words::::")
+        #print(reviewContent[a])
         text = ' '.join([word for word in reviewContent[a].split() if word not in stopwords.words("english")])
         text = ''.join(ch for ch in text if ch not in exclude)
         text = nltk.word_tokenize(text)
@@ -196,9 +196,6 @@ def filterAdj(nounScores, adjDict, filename):
     for key, value in nounScores.items():
         if value >= 3:
             nouns.append(key)
-    nouns1 = ["sound quality", "battery life", "great phone", "cell phone", "menu option", "color screen", "flip phone",
-              "samsung phone", "nokia phones", "corporate email", "ring tone", "tmobile service"]
-
     nouns = set(nouns)
 
     stopWords = stopwords.words("english")

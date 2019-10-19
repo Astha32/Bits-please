@@ -26,7 +26,13 @@ exclude = set(string.punctuation)
 reviewContent = []
 alpha = 0.6
 def getList():
+    """
+
+    :rtype: object
+    """
     # reading from the created file "modified.txt"
+    adjNounAll = dict()
+    adjNounList = dict()
     with open("modified.txt") as f:
         review = []
         for line in f:
@@ -34,7 +40,6 @@ def getList():
                 if review:
                     reviewContent.append(review)
                     review = []
-                reviewTitle.append(line.split("[t]")[1].rstrip("\r\n"))
             else:
                 if "##" in line:
                     x = line.split("##")
@@ -84,18 +89,22 @@ def getList():
                             if(tagList[k][ 1] == "NN"):
                                 if(j != len(tagList)):
                                     nounScores[tagList[min(j, k)][0]] += 1
+                                    adjNounAll[tagList[min(j, k)][0]] = tagList[l][0]
                                 else:
                                     nounScores[tagList[k][0]] += 1
+                                    adjNounAll[tagList[k][0]] = tagList[l][0]
                                 break
                     elif check == 1:
                         nounScores[tagList[j][0]] += 1
+                        adjNounAll[tagList[j][0]] = tagList[l][0]
 
     nounScores = OrderedDict(sorted(nounScores.items(), key=operator.itemgetter(1)))
     nouns = []
     for key, value in nounScores.items():
         if value >= 3:
             nouns.append(key)
-    return nouns
+            adjNounList[key] = adjNounAll[key]
+    return [nouns, adjNounList]
 
 def intersect(a, b):
     return list(set(a) & set(b))
