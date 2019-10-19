@@ -4,8 +4,7 @@ import operator
 from collections import OrderedDict
 
 
-def getScore(adjList, filename):
-    inversion_words = []
+def getScore(adjList):
     adjScores = dict()
 
     for i in adjList:
