@@ -56,10 +56,6 @@ outputDir = "./Results_" + filename
 if not os.path.exists(outputDir):
     os.makedirs(outputDir)
 
-print(adjDict)
-print(adjDict)
-print(featureList)
-
 with open(outputDir + "/positiveReviews.txt", "w") as filePos:
     for i in posPredIndex:
         for k in range(len(reviewContent[i])):
@@ -79,16 +75,24 @@ with open(outputDir + "/negativeReviews.txt", "w") as fileNeg:
 with open(outputDir + "/neutralReviews.txt", "w") as fileNeut:
     for i in neutPredIndex:
         for k in range(len(reviewContent[i])):
-            fileNeut.write(reviewContent[i][k])
-            fileNeut.write(" ")
+            s = "<br/>"
+            if reviewContent[i][k] != s:
+                fileNeut.write(reviewContent[i][k])
+                fileNeut.write(" ")
         fileNeut.write(" \n")
 
+
+dontInclude = ["boy", "girl", "anyone", "someone", "bit", "luck", "lot", "auto", "body", "hand", "leg", "plan", "survey", "shoulder", "time", "get", "play", "machine", "christmas", "thing", "perfect", "choice",
+               "etc", "recommendation", "thank", "offering", "crisp", "view", "piece", "premium", "bug", "delay", "kind", "difference", "note", "work", "box", "photo"]
 #Write the predicted neutral reviews to a file
 with open(outputDir + "/featureScore.txt", "w") as fileFeat:
     t = Texttable()
     lst = [["Feature", "Score"]]
     for tup in avgFeatScore:
-        lst.append([tup[0], tup[1]])
+        if tup[0] in dontInclude:
+            continue
+        else:
+            lst.append([tup[0], tup[1]])
     t.add_rows(lst)
     fileFeat.write(str(t.draw()))
 
@@ -97,12 +101,15 @@ filespath1 = outputDir + "/negativeReviews.txt"
 filespath2 = outputDir + "/positiveReviews.txt"
 filespath3 = outputDir + "/neutralReviews.txt"
 
+print("\n")
 print("Good things people said about the product::")
 print(review_summarizer.summary(filespath2))
 
+print("\n")
 print("Bad things people said::")
 print(review_summarizer.summary(filespath1))
 
+print("\n")
 print("Neutral views of people::")
 print(review_summarizer.summary(filespath3))
 
